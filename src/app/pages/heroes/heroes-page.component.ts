@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { SuperHero } from '../models/super-hero';
-import { SuperHeroService } from '../services/super-hero.service';
-import { UserService } from '../services/user.service';
+import { SuperHero } from 'src/app/models/super-hero';
+import { SuperHeroService } from 'src/app/services/super-hero.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-heroes-page',
