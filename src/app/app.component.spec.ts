@@ -2,18 +2,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { EditHeroComponent } from './components/edit-hero/edit-hero.component';
+import { EditHeroComponent } from './heroes/edit-hero/edit-hero.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        HttpClientModule,
-      ],
-      declarations: [
-        AppComponent, EditHeroComponent
-      ],
+      imports: [RouterTestingModule, HttpClientModule],
+      declarations: [AppComponent, EditHeroComponent],
     }).compileComponents();
   });
 
@@ -33,7 +28,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    
+
     expect(compiled.querySelector('.content')?.textContent).toContain('Create');
   });
 });

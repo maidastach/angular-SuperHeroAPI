@@ -1,0 +1,19 @@
+<h2>Login Page</h2>
+
+<div>
+  Email:
+  <input [(ngModel)]="userLogin.email" placeholder="Email" />
+</div>
+
+<div>
+  Password:
+  <input
+    [(ngModel)]="userLogin.password"
+    placeholder="Password"
+    type="password"
+  />
+</div>
+<br />
+<button (click)="login(userLogin)">Login</button>
+<p>Don't have an account?</p>
+<button routerLink="/auth/register">Register</button>

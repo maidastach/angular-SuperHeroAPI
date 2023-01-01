@@ -1,0 +1,31 @@
+<h3>
+  You have {{ userRole }} role and You
+  {{ userRole === "Admin" ? "can" : "cannot" }} touch Heroes
+</h3>
+<button *ngIf="userRole === 'Admin'" (click)="createHero()">Create Hero</button>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Place</th>
+    <th *ngIf="userRole === 'Admin'">Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hero of heroes">
+      <td>{{ hero.name }}</td>
+      <td>{{ hero.firstName }}</td>
+      <td>{{ hero.lastName }}</td>
+      <td>{{ hero.place }}</td>
+      <td *ngIf="userRole === 'Admin'">
+        <button (click)="setHeroToEdit(hero)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p *ngIf="!heroes.length">No Hero Saved Yet</p>
+
+<app-edit-hero
+  [hero]="heroToEdit"
+  (heroesUpdated)="updateHeroList($event)"
+></app-edit-hero>

@@ -1,0 +1,29 @@
+<h2>Register Page</h2>
+
+<div>
+  Username: <input [(ngModel)]="userRegister.username" placeholder="Username" />
+</div>
+
+<div>
+  Email:
+  <input [(ngModel)]="userRegister.email" placeholder="Email" />
+</div>
+
+<div>
+  Password:
+  <input
+    [(ngModel)]="userRegister.password"
+    placeholder="Password"
+    type="password"
+  />
+</div>
+
+<div>
+  Are you an Admin?
+  <input [(ngModel)]="userRegister.isAdmin" type="checkbox" />
+</div>
+
+<br />
+<button (click)="register(userRegister)">Register</button>
+<p>Already registered?</p>
+<button routerLink="/auth/login">Login</button>

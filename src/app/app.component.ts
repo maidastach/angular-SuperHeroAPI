@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SuperHero } from './models/super-hero';
-import { SuperHeroService } from './services/super-hero.service';
+import { User } from './models/user';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,28 +9,17 @@ import { SuperHeroService } from './services/super-hero.service';
 })
 export class AppComponent {
   title = 'DerivcoPrepAng';
-  heroes: SuperHero[] = [];
-  heroToEdit?: SuperHero;
+  isLoggedIn: boolean = false;
 
-  constructor(private superHeroService: SuperHeroService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.superHeroService
-      .getSuperHeroes()
-      .subscribe((result: SuperHero[]) => (this.heroes = result));
-    console.log(this.heroes);
+    this.authService.isLoggedInSource.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
 
-  setHeroToEdit(hero: SuperHero): void {
-    this.heroToEdit = hero;
-  }
-
-  createHero(): void {
-    this.heroToEdit = new SuperHero() 
-  }
-
-  updateHeroList(heroes: SuperHero[]): void {
-    this.heroes = heroes
-    this.heroToEdit = undefined
+  logoutUser(): void {
+    this.authService.logout();
   }
 }

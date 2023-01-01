@@ -1,16 +1,15 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EditHeroComponent } from './components/edit-hero/edit-hero.component';
-import { FormsModule } from '@angular/forms';
+import { NotFoundPageComponent } from './notfound/not-found-page.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
-  declarations: [AppComponent, EditHeroComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  declarations: [AppComponent, NotFoundPageComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
